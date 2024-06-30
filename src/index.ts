@@ -3,10 +3,9 @@ import { router as greeting } from "./routes/greet";
 const app: Express = express();
 const port: number = 2000;
 
-app.set('trust proxy', true);
+// app.set('trust proxy', true);
 
 app.get("/", (req: Request, res: Response) => {
-    console.log("Express + TypeScript Server");
     res.send("Express + TypeScript Server");
 });
 
