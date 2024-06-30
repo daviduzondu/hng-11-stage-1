@@ -5,7 +5,7 @@ const router = Router();
 router.route("/hello").get(async (req: Request, res: Response, next: NextFunction) => {
     const { visitor_name } = req.query;
 
-    const response = await fetch(`https://demo.ip-api.com/json/102.89.33.123?fields=66842623&lang=en`);
+    const response = await fetch(`https://demo.ip-api.com/json/${req.ip}?fields=66842623&lang=en`);
     if (!response.ok) return next(new Error("Failed to get ip address"));
     const { city } = await response.json();
 
