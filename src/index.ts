@@ -13,7 +13,7 @@ app.use('/api/', greeting);
 
 // Global error handling
 app.use((err: Error, req: Request, res: Response, next: NextFunction): void => {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ error: true, message: err.message });
 });
 
 app.listen(port, () => console.log(`[server]: Server is running at http://localhost:${port}`));
