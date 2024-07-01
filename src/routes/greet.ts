@@ -6,7 +6,7 @@ router.route("/hello").get(async (req: Request, res: Response, next: NextFunctio
     const { visitor_name } = req.query;
     const name = visitor_name as string
 
-    const fetchResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=${req.ip}London&aqi=no`);
+    const fetchResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=${req.ip}&aqi=no`);
     const { location, current, error } = await fetchResponse.json();
 
     if (!fetchResponse.ok) {
