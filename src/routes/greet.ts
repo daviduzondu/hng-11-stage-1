@@ -10,7 +10,7 @@ router.route("/hello").get(async (req: Request, res: Response, next: NextFunctio
     const { location, current, error } = await fetchResponse.json();
 
     if (!fetchResponse.ok) {
-        throw new Error(`Failed to locate ip address (${req.ip}): ${error.message}`)
+        return next(new Error(`Failed to locate ip address (${req.ip}): ${error.message}`));
     }
 
     if (!visitor_name) return next(new Error("visitor_name not provided"));
