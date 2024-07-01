@@ -20,7 +20,7 @@ Response:
 
 ### Overview
 
-The API is hosted on `domain.com`. It provides a greeting message along with the client's IP address and location details.
+The API is hosted on `https://hng-11-stage-1-david-uzondu.up.railway.app`. It provides a greeting message along with the client's IP address and location details.
 
 #### Usage
 
