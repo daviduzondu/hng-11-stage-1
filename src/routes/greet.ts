@@ -12,7 +12,7 @@ router.route("/hello").get(async (req: Request, res: Response, next: NextFunctio
     if (!fetchResponse.ok) return next(new Error(`Failed to locate ip address (${req.ip}): ${error.message}`));
 
     if (!visitor_name) return next(new Error("visitor_name not provided"));
-    res.status(200).send({ client_ip: req.ip, location: location?.region, greeting: `Hello ${name.replaceAll('\"', '')}, the temperature is ${current.temp_c} degrees Celsius in ${location.region}` });
+    res.status(200).send({ client_ip: req.ip, location: location?.region, greeting: `Hello, ${name.replaceAll('\"', '')}!, the temperature is ${current.temp_c} degrees Celsius in ${location.region}` });
 })
 
 export { router };
