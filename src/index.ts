@@ -1,7 +1,7 @@
 import express, { ErrorRequestHandler, Express, NextFunction, Request, Response } from 'express';
 import { router as greeting } from "./routes/greet";
 const app: Express = express();
-const port: number = 2000;
+const port: number = Number(process.env.PORT) || 2000;
 
 app.set('trust proxy', true);
 
