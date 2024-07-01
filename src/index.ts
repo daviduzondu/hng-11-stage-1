@@ -1,8 +1,9 @@
 import express, { ErrorRequestHandler, Express, NextFunction, Request, Response } from 'express';
+import 'dotenv/config'
 import { router as greeting } from "./routes/greet";
 const app: Express = express();
 const port: number = Number(process.env.PORT) || 2000;
-
+const API_KEY = process.env.API_KEY
 app.set('trust proxy', true);
 
 app.get("/", (req: Request, res: Response) => {
