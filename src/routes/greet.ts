@@ -9,15 +9,12 @@ router.route("/hello").get(async (req: any, res: Response, next: NextFunction) =
 
     if (!response.ok) return next(new Error("failed to get location based on ip address"));
 
-    const locData = await response.json();
+    const { city } = await response.json();
 
-    console.log(req.headers['x-forwarded-for']);
-
-    req.error = { ...locData, ip: req.ip };
-    if (!locData.city) return next(new Error("failed to get location based on ip address"));
+    if (!city) return next(new Error("failed to get location based on ip address"));
 
     if (!visitor_name) return next(new Error("visitor_name not provided"));
-    res.status(200).send({ greeting: `Hello ${visitor_name}`, client_ip: req.ip });
+    res.status(200).send({ greeting: `Hello ${visitor_name}`, client_ip: req.ip, location: city });
 })
 
 export { router };
