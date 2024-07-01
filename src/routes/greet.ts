@@ -9,12 +9,10 @@ router.route("/hello").get(async (req: Request, res: Response, next: NextFunctio
     const fetchResponse = await fetch(`http://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=${req.ip}&aqi=no`);
     const { location, current, error } = await fetchResponse.json();
 
-    if (!fetchResponse.ok) {
-        return next(new Error(`Failed to locate ip address (${req.ip}): ${error.message}`));
-    }
+    if (!fetchResponse.ok) return next(new Error(`Failed to locate ip address (${req.ip}): ${error.message}`));
 
     if (!visitor_name) return next(new Error("visitor_name not provided"));
-    res.status(200).send({ greeting: `Hello ${name.replaceAll('\"', '')}, the temperature is ${current.temp_c} degrees Celcius in ${location.region}`, client_ip: req.ip, location: location?.region });
+    res.status(200).send({ greeting: `Hello ${name.replaceAll('\"', '')}, the temperature is ${current.temp_c} degrees Celsius in ${location.region}`, client_ip: req.ip, location: location?.region });
 })
 
 export { router };
